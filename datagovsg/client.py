@@ -62,7 +62,7 @@ class Resource(object):
 
         initialFetch = self.fetchData(100, 0)
         results.append(initialFetch["result"]["records"])
-        nextFetchURL = initialFetch["result"]["_links"]["next"]
+        nextFetchURL = self.host + initialFetch["result"]["_links"]["next"]
         while True:
             res = requests.get(nextFetchURL).json()
             if len(res["result"]["records"]) == 0:
