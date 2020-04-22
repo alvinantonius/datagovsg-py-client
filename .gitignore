@@ -1,0 +1,14 @@
+.DS_Store
+*.retry
+
+# Ignore .pycache files
+__pycache__/
+
+# Ignore Airflow local files
+airflow.cfg
+airflow.db
+logs/
+unittests.cfg
+.DS_Store
+venv/
+.vscode/
