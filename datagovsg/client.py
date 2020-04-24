@@ -59,15 +59,15 @@ class Resource(object):
 
     def fetchAllData(self):
         results = []
-
-        initialFetch = self.fetchData(100, 0)
-        results.append(initialFetch["result"]["records"])
+        initialFetch = self.fetchData(1000, 0)
+        results.extend(initialFetch["result"]["records"])
         nextFetchURL = self.host + initialFetch["result"]["_links"]["next"]
         while True:
             res = requests.get(nextFetchURL).json()
             if len(res["result"]["records"]) == 0:
                 break
-            results.append(res["result"]["records"])
+            results.extend(res["result"]["records"])
+            nextFetchURL = self.host + res["result"]["_links"]["next"]
         return results
 
 
